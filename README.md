@@ -18,7 +18,7 @@ Starts the Server at localhost port 8080
 
 ##### Importand endpoints
 * **API:** http://127.0.0.1:8080/api -> API Documentation
-* **GraphQL:** http://127.0.0.1:8080/ap/graphql -> Graphql playground
+* **GraphQL:** http://127.0.0.1:8080/api/graphql -> Graphql playground
 
 Use the command without the -d flag to the process in the foreground
 ### Restart Docker cluster
