@@ -8,6 +8,8 @@ use Doctrine\Persistence\ObjectManager;
 
 class ServiceFixtures extends Fixture
 {
+    public const CAT_FEEDING_SERVICE_REFERENCE = 'cat-feeding-service';
+
     public function load(ObjectManager $manager): void
     {
         $catProfileService = new Service();
@@ -27,6 +29,8 @@ class ServiceFixtures extends Fixture
         $catTrackingService->setIdentifier('cat_tracking');
         $catTrackingService->setIsActive(false);
         $manager->persist($catTrackingService);
+
+        $this->addReference(self::CAT_FEEDING_SERVICE_REFERENCE, $catFeedingService);
 
         $manager->flush();
     }

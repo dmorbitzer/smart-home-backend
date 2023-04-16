@@ -8,12 +8,13 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Validator\Constraints\Date;
 
-class CatFixture extends Fixture
+class CatFixtures extends Fixture
 {
+    public const MALE_CAT_REFERENCE = 'male-cat';
+    public const FEMALE_CAT_REFERENCE = 'female-cat';
+
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
         $male = new Gender();
         $male->setName('male');
         $manager->persist($male);
@@ -39,5 +40,8 @@ class CatFixture extends Fixture
         $manager->persist($femaleCat);
 
         $manager->flush();
+
+        $this->addReference(self::MALE_CAT_REFERENCE, $maleCat);
+        $this->addReference(self::FEMALE_CAT_REFERENCE, $femaleCat);
     }
 }
