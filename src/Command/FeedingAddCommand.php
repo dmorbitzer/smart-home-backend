@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Message\CatFeedingServiceMessage;
+use App\Service\InsertFeedingMessageServiceInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,13 +22,19 @@ class FeedingAddCommand extends Command
     /** @var MessageBusInterface  */
     private MessageBusInterface $bus;
 
+    /** @var InsertFeedingMessageServiceInterface  */
+    private InsertFeedingMessageServiceInterface $insertFeedingMessageService;
+
     /**
      * @param MessageBusInterface $bus
      */
-    public function __construct(MessageBusInterface $bus)
-    {
+    public function __construct(
+        MessageBusInterface $bus,
+        InsertFeedingMessageServiceInterface $insertFeedingMessageService
+    ) {
         parent::__construct();
         $this->bus = $bus;
+        $this->insertFeedingMessageService = $insertFeedingMessageService;
     }
 
 
@@ -45,8 +52,11 @@ class FeedingAddCommand extends Command
         $catId = $input->getArgument('catId');
         $foodId = $input->getArgument('foodId');
 
-        $catFeedMessage = new CatFeedingServiceMessage($catId, $foodId, 'manuell');
-        $this->bus->dispatch($catFeedMessage);
+        $this->insertFeedingMessageService->insert(
+            $catId,
+            $foodId,
+            InsertFeedingMessageServiceInterface::MANUELL_MODE
+        );
 
         $io->success('You added a new cat feeding message to the rabbitmq!');
 
