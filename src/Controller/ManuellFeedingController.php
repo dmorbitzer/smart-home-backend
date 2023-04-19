@@ -23,8 +23,9 @@ class ManuellFeedingController extends AbstractController
     #[Route('/feeding_service/manuell', name: 'sh_manuell_feeding', methods: ['POST'])]
     public function index(Request $request): Response
     {
-        $catId = $request->get('catId');
-        $foodId = $request->get('foodId');
+        $params = json_decode($request->getContent());
+        $catId = $params->catId;
+        $foodId = $params->foodId;
 
         if (!isset($catId) || !isset($foodId)) {
             return $this->json(['status' => 'error', 'msg' => 'Missing parameters', 'code' => 1]);
