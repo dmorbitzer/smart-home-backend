@@ -1,5 +1,9 @@
 FROM php:8.2-fpm
 
+ENV TZ="Europe/Berlin"
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN printf '[PHP]\ndate.timezone = "Europe/Berlin"\n' > /usr/local/etc/php/conf.d/tzone.ini
+
 RUN apt update \
     && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip librabbitmq-dev \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
