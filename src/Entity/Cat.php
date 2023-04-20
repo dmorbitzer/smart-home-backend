@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
         new Query(),
         new QueryCollection(),
         new Mutation(name: 'create'),
+        new Mutation(name: 'update'),
         new Mutation(
             name: 'deleteWithFeedingTimes',
             resolver: CatDeleteResolver::class,
