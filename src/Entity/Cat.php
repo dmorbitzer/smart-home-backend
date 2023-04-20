@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GraphQl\Mutation;
 use ApiPlatform\Metadata\GraphQl\Query;
+use ApiPlatform\Metadata\GraphQl\QueryCollection;
 use App\Repository\CatRepository;
 use App\Resolver\CatDeleteResolver;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     graphQlOperations: [
         new Query(),
+        new QueryCollection(),
         new Mutation(name: 'create'),
         new Mutation(
             name: 'deleteWithFeedingTimes',
