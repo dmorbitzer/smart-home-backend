@@ -30,6 +30,12 @@ class ServiceFixtures extends Fixture
         $catTrackingService->setIsActive(false);
         $manager->persist($catTrackingService);
 
+        $logService = new Service();
+        $logService->setName('Logs');
+        $logService->setIdentifier('log');
+        $logService->setIsActive(true);
+        $manager->persist($logService);
+
         $this->addReference(self::CAT_FEEDING_SERVICE_REFERENCE, $catFeedingService);
 
         $manager->flush();
