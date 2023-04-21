@@ -24,6 +24,9 @@ class Service
     #[ORM\Column(name: 'is_active')]
     private ?bool $isActive = null;
 
+    #[ORM\Column]
+    private ?bool $canFilter = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +64,18 @@ class Service
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function isCanFilter(): ?bool
+    {
+        return $this->canFilter;
+    }
+
+    public function setCanFilter(bool $canFilter): self
+    {
+        $this->canFilter = $canFilter;
 
         return $this;
     }
