@@ -27,7 +27,8 @@ class LogFixtures extends Fixture implements DependentFixtureInterface
         $logOne->setService($catFeedingService);
         $logOne->setData([
            'cat' => $maleCat->getName(),
-           'foodType' => $dryFood->getName()
+           'foodType' => $dryFood->getName(),
+            'type' => 'manuell'
         ]);
         $logOne->setTime(date_create('now'));
         $manager->persist($logOne);
@@ -36,7 +37,8 @@ class LogFixtures extends Fixture implements DependentFixtureInterface
         $logTwo->setService($catFeedingService);
         $logTwo->setData([
             'cat' => $maleCat->getName(),
-            'foodType' => $dryFood->getName()
+            'foodType' => $dryFood->getName(),
+            'type' => 'automatic'
         ]);
         $logTwo->setTime(date_create('now'));
         $manager->persist($logTwo);
