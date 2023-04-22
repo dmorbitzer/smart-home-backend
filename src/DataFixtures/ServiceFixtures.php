@@ -34,7 +34,7 @@ class ServiceFixtures extends Fixture
         $manager->persist($catTrackingService);
 
         $logService = new Service();
-        $logService->setName('Logs');
+        $logService->setName('Logbuch');
         $logService->setIdentifier('log');
         $logService->setIsActive(true);
         $logService->setCanFilter(false);
