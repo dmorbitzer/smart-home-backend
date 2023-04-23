@@ -53,8 +53,18 @@ Credentials:
 ``symfony server:start``
 
 Starts a local server at http://127.0.0.1:8000
-### Testing
+## Testing
 #### Run Unit and Integration Tests:
 ``bin/phpunit``
 #### Run linter:
 ``./vendor/bin/grumphp run``
+
+## Console commands
+#### Add Feeding message to rabbitmq:
+``bin/console sh:feed:add ${catId} ${foodId}``
+#### Call Automatic feeding command:
+``bin/console sh:feed:auto``
+#### Start consumer:
+``bin/console messenger:consume async -vv``
+#### Add user:
+``bin/console sh:user:add ${username} ${password}``
