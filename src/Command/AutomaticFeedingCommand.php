@@ -15,7 +15,7 @@ use function Symfony\Component\Clock\now;
 
 #[AsCommand(
     name: 'sh:feed:auto',
-    description: 'Add a short description for your command',
+    description: 'Command to load the automatic feeding times',
 )]
 class AutomaticFeedingCommand extends Command
 {
